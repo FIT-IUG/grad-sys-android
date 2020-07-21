@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/addSupervisor"
+            android:icon="@drawable/supervisor"
+            android:title="add supervisor"
+            />
+        <item
+            android:id="@+id/addStudent"
+            android:icon="@drawable/add_student"
+            android:title="add student's" />
+
+    </group>
+
+</menu>

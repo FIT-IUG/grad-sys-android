@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "707955875371",
+    "firebase_url": "https://fugg-system.firebaseio.com",
+    "project_id": "fugg-system",
+    "storage_bucket": "fugg-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707955875371:android:7f633757f00027dbe6546e",
+        "android_client_info": {
+          "package_name": "com.example.fugg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707955875371-7mqa41ar1b0f0l26usrpaddv9s09iqk9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fugg",
+            "certificate_hash": "06965a0f76ea8324cc146440bd39ed2d0d838608"
+          }
+        },
+        {
+          "client_id": "707955875371-m2o4msl1eftd8bmj373h6pqmin0aoh3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoHL8PHK4m84P5EU60GOd9nFQiizAXHlE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707955875371-m2o4msl1eftd8bmj373h6pqmin0aoh3k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "707955875371-24fg9npbmmerppisqafprf13j9h0dtu5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.alihyderjaradah.net.Graduation"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707955875371:android:2a10315ad2210b82e6546e",
+        "android_client_info": {
+          "package_name": "com.example.graduation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707955875371-baum7glpavup77mv672vvl2k2emqipi5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.graduation",
+            "certificate_hash": "06965a0f76ea8324cc146440bd39ed2d0d838608"
+          }
+        },
+        {
+          "client_id": "707955875371-m2o4msl1eftd8bmj373h6pqmin0aoh3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoHL8PHK4m84P5EU60GOd9nFQiizAXHlE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707955875371-m2o4msl1eftd8bmj373h6pqmin0aoh3k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "707955875371-24fg9npbmmerppisqafprf13j9h0dtu5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.alihyderjaradah.net.Graduation"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
