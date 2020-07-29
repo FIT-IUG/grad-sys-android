@@ -10,10 +10,28 @@ public class notifications {
     String to;
     String type;
     ArrayList<String>arrayList;
+    ArrayList<String>arrayListlist1;
+    ArrayList<String>arrayListlist2;
     String project_name;
     String project_description;
 
-    public notifications( String project_name,String leader_name, String leader_email) {
+    public notifications( String project_name,String leader_name, String leader_email, ArrayList<String> arrayListlist1, ArrayList<String> arrayListlist2) {
+        this.project_name = project_name;
+        this.leader_name = leader_name;
+        this.leader_email = leader_email;
+        this.arrayListlist1 = arrayListlist1;
+        this.arrayListlist2 = arrayListlist2;
+
+    }
+
+    public notifications(String message, String project_name, ArrayList<String> arrayListlist1, ArrayList<String> arrayListlist2) {
+        this.message = message;
+        this.project_name = project_name;
+        this.arrayListlist1 = arrayListlist1;
+        this.arrayListlist2 = arrayListlist2;
+    }
+
+    public notifications(String project_name, String leader_name, String leader_email) {
         this.project_name = project_name;
         this.leader_name = leader_name;
         this.leader_email = leader_email;
@@ -51,14 +69,6 @@ public class notifications {
         this.project_name = project_name;
     }
 
-    public String getProject_description() {
-        return project_description;
-    }
-
-    public void setProject_description(String project_description) {
-        this.project_description = project_description;
-    }
-
     public notifications(String project_name, String project_description,ArrayList<String> arrayList) {
         this.arrayList = arrayList;
         this.project_name = project_name;
@@ -67,13 +77,6 @@ public class notifications {
 
     public notifications(String message) {
         this.message = message;
-    }
-
-    public notifications(String from, String message, String to, String type) {
-        this.from = from;
-        this.message = message;
-        this.to = to;
-        this.type = type;
     }
 
     public String getFrom() {
@@ -106,5 +109,21 @@ public class notifications {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public ArrayList<String> getArrayListlist1() {
+        return arrayListlist1;
+    }
+
+    public void setArrayListlist1(ArrayList<String> arrayListlist1) {
+        this.arrayListlist1 = arrayListlist1;
+    }
+
+    public ArrayList<String> getArrayListlist2() {
+        return arrayListlist2;
+    }
+
+    public void setArrayListlist2(ArrayList<String> arrayListlist2) {
+        this.arrayListlist2 = arrayListlist2;
     }
 }

@@ -13,42 +13,32 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fugg.Activity.MainActivity;
 import com.example.fugg.R;
 
 import java.util.ArrayList;
 
-public class notifications_adapter extends RecyclerView.Adapter<notifications_adapter.myHolder> {
+public class notifications_adapter_student extends RecyclerView.Adapter<notifications_adapter_student.myHolder> {
     static ArrayList<com.example.fugg.classs.notifications> card;
     static OnItemClick onItemClick;
-    static Context context;
    // public void setOnItemClick(OnItemClick onItemClick) {
 //        this.onItemClick = onItemClick;
 //    }
 
-    public notifications_adapter(ArrayList<com.example.fugg.classs.notifications> card, Context context,OnItemClick onItemClick) {
+    public notifications_adapter_student(ArrayList<com.example.fugg.classs.notifications> card, OnItemClick onItemClick) {
         this.onItemClick=onItemClick;
-        this.context=context;
         this.card = card;
     }
     @NonNull
     @Override
     public myHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.notifi_design, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_student_item, parent, false);
         myHolder h = new myHolder(v);
         return h;
     }
     @Override
     public void onBindViewHolder(@NonNull myHolder holder, int i) {
         final com.example.fugg.classs.notifications item = card.get(i);
-
-        ArrayAdapter<String> adapter1=new ArrayAdapter<String>(context,android.R.layout.simple_expandable_list_item_1,item.getArrayListlist1());
-        ArrayAdapter<String> adapter2=new ArrayAdapter<String>(context,android.R.layout.simple_expandable_list_item_1,item.getArrayListlist2());
-        myHolder.textViewlist1.setAdapter(adapter1);
-        myHolder.textViewlist2.setAdapter(adapter2);
         myHolder.textView.setText(item.getMessage());
-        myHolder.textViewtitle.setText(item.getProject_name());
-
         holder.bind(onItemClick,i);
 
 
@@ -73,20 +63,15 @@ public class notifications_adapter extends RecyclerView.Adapter<notifications_ad
 
     public static class myHolder extends RecyclerView.ViewHolder {
         static TextView textView;
-        static TextView textViewtitle;
         static Button buttonaccept;
         static Button buttonrefuse;
-        static  ListView textViewlist1;
-        static  ListView textViewlist2;
+
 
         public myHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.text1);
-            textViewtitle = itemView.findViewById(R.id.titltnotifi);
-            textViewlist1=itemView.findViewById(R.id.listtype);
-            textViewlist2=itemView.findViewById(R.id.listmemb);
-            buttonaccept=itemView.findViewById(R.id.buttonaccept);
-            buttonrefuse=itemView.findViewById(R.id.buttonrefuse);
+            textView = itemView.findViewById(R.id.text1st);
+            buttonaccept=itemView.findViewById(R.id.buttonacceptst);
+            buttonrefuse=itemView.findViewById(R.id.buttonrefusest);
         }
 
      public  void bind(OnItemClick lintsne,int posation){

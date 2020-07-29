@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fugg.Adapter.notifications_adapter_student;
 import com.example.fugg.R;
 import com.example.fugg.Adapter.notifications_adapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,10 +49,9 @@ public class NotificationsFragment extends Fragment {
     DatabaseReference myrefall;
     DatabaseReference myrefall_gropus;
 
-
     private ArrayList<com.example.fugg.classs.notifications> data = new ArrayList<>();
     private RecyclerView recyclerView;
-    private notifications_adapter homeAdapter;
+    private com.example.fugg.Adapter.notifications_adapter_student homeAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -99,7 +99,7 @@ public class NotificationsFragment extends Fragment {
                                         if(status.equals("wait")) {
                                             data.add(new com.example.fugg.classs.notifications(massge));
                                         }
-                                        homeAdapter = new notifications_adapter(data, new notifications_adapter.OnItemClick() {
+                                        homeAdapter = new notifications_adapter_student(data,new notifications_adapter_student.OnItemClick() {
                                             @Override
                                             public void accept() {
                                                 mDb.child("groups").addValueEventListener(new ValueEventListener() {
@@ -118,7 +118,6 @@ public class NotificationsFragment extends Fragment {
                                                     }
                                                     @Override
                                                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                                                     }
                                                 });
                                                 System.out.println(leader);

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -30,8 +31,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Create_Group extends AppCompatActivity {
@@ -73,6 +76,8 @@ public class Create_Group extends AppCompatActivity {
     ProgressDialog progress;
     RadioGroup radioGroup;
     RadioButton radioButton;
+    ArrayList<String>arrayList1234;
+    ListView listView123;
 
 
     @Override
@@ -83,6 +88,8 @@ public class Create_Group extends AppCompatActivity {
         button = findViewById(R.id.create);
         group = new ArrayList<>();
         checkgroup = new ArrayList<>();
+        arrayList1234=new ArrayList<>();
+        listView123=findViewById(R.id.list123456);
 
         progress = new ProgressDialog(this);
         progress.setMessage("Loading.........");
@@ -101,8 +108,6 @@ public class Create_Group extends AppCompatActivity {
         myrefagroup = mDatabase.getReference("groups");
         pushkey = myrefall.push().getKey();
         key1 = myref.push().getKey();
-        key2 = myref.push().getKey();
-        key3 = myref.push().getKey();
         keygroup = myrefagroup.push().getKey();
         arraylist = new ArrayList<>();
         radioGroup = findViewById(R.id.groub);
@@ -161,19 +166,7 @@ public class Create_Group extends AppCompatActivity {
                                                     finish();
 
                                                 }else{
-                                                    progress.dismiss();
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(Create_Group.this);
-                                                    builder.setCancelable(true);
-                                                    builder.setMessage("لا يمكنك الاستفاده من التطبيق الا عند موافقة الحد الادنى من الطلبه");
 
-                                                    builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                                            finish();
-                                                            System.exit(0);
-                                                        }
-                                                    });
-                                                    builder.show();
                                                 }
                                             }
                                             @Override
@@ -258,35 +251,76 @@ public class Create_Group extends AppCompatActivity {
             }
         });
         spinner1 = findViewById(R.id.spinner11);
-        spinner2 = findViewById(R.id.spinner2);
-        spinner3 = findViewById(R.id.spinner3);
+
 
         spinner1.setAdapter(new ArrayAdapter<>(Create_Group.this, android.R.layout.simple_spinner_dropdown_item, avg));
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                   number1 = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        spinner2.setAdapter(new ArrayAdapter<>(Create_Group.this, android.R.layout.simple_spinner_dropdown_item, avg));
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position,
-                                       long id) {
-                    number2 = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        spinner3.setAdapter(new ArrayAdapter<>(Create_Group.this, android.R.layout.simple_spinner_dropdown_item, avg));
-        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    number3 = parent.getItemAtPosition(position).toString();
+                arrayList1234.add(number1);
+
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(Create_Group.this);
+                builder1.setMessage(number1+"هل انت متاكد من ارسال طلب ل ");
+                builder1.setCancelable(true);
+                builder1.setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                mDb.child("settings").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        max = String.valueOf(dataSnapshot.child("max_group_members").getValue());
+                                        min = String.valueOf(dataSnapshot.child("min_group_members").getValue());
+                                        maxi = Integer.parseInt(max);
+                                        mini = Integer.parseInt(min);
+                                        group.add(number1);
+
+                                        Set<String> set = new HashSet<>(group);
+                                        group.clear();
+                                        group.addAll(set);
+                                            if (group.size()<= maxi) {
+                                                Log.e("number1out",""+number1);
+                                                if (number1 != null) {
+                                                    ArrayAdapter<String> adapter1=new ArrayAdapter<String>(Create_Group.this,android.R.layout.simple_expandable_list_item_1,arrayList1234);
+                                                    listView123.setAdapter(adapter1);
+                                                    Log.e("number1",""+number1);
+                                                    key1 = myref.push().getKey();
+
+                                                    Map<String,Object> taskMap = new HashMap<>();
+                                                    taskMap.put("from", std);
+                                                    taskMap.put("to", number1);
+                                                    taskMap.put("from_name", name);
+                                                    taskMap.put("message", "بالانضمام الى فريق التخرج الخاص" + name + "لقد طلب منك الطالب");
+                                                    taskMap.put("status", "wait");
+                                                    taskMap.put("type", "join_group");
+                                                    myref.push().setValue(taskMap);
+
+                                                }
+                                                myrefagroup.child(keygroup).child("leaderStudentStd").setValue(std);
+                                                myrefall.child(pushkey).setValue(std);
+                                            }
+                                            else {
+                                                Toast.makeText(Create_Group.this, "لقد تجاوزت الحد المسموح به أو هناك تكرار في ارقام الفريق", Toast.LENGTH_SHORT).show();
+                                            }
+
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    }
+                                });
+                                dialog.cancel();
+                            }
+                        });
+                builder1.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -296,72 +330,21 @@ public class Create_Group extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                group.add(number1);
-                group.add(number2);
-                group.add(number3);
-
-                Set<String> set = new HashSet<>(group);
-                group.clear();
-                group.addAll(set);
-
-                mDb.child("settings").addValueEventListener(new ValueEventListener() {
+                final String gender = radioButton.getText().toString();
+                myrefagroup.child(keygroup).child("graduateInFirstSemester").setValue(gender);
+                button.setEnabled(false);
+                progress.dismiss();
+                AlertDialog.Builder builder = new AlertDialog.Builder(Create_Group.this);
+                builder.setCancelable(true);
+                builder.setMessage("لا يمكنك الاستفاده من التطبيق الا عند موافقة الحد الادنى من الطلبه");
+                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        max = String.valueOf(dataSnapshot.child("max_group_members").getValue());
-                        min = String.valueOf(dataSnapshot.child("min_group_members").getValue());
-                        maxi = Integer.parseInt(max);
-                        mini = Integer.parseInt(min);
-                        Log.e("ccccccccc", "" + maxi);
-                        if (radioButton != null) {
-                            final String gender = radioButton.getText().toString();
-                            System.out.println(group.size() - 2);
-                            if (group.size() - 2 <= maxi && group.size() - 2 >= mini) {
-                                Log.e("number1out",""+number1);
-
-                                if (number1 != null) {
-                                    Log.e("number1",""+number1);
-                                    myref.child(key1).child("from").setValue(std);
-                                    myref.child(key1).child("to").setValue(number1);
-                                    myref.child(key1).child("from_name").setValue(name);
-                                    myref.child(key1).child("message").setValue("بالانضمام الى فريق التخرج الخاص" + name + "لقد طلب منك الطالب");
-                                    myref.child(key1).child("status").setValue("wait");
-                                    myref.child(key1).child("type").setValue("join_group");
-//                                myrefall.child(pushkey).setValue(number1);
-                                }
-                                if (number2 != null) {
-                                    Log.e("number2",""+number2);
-                                    myref.child(key2).child("from").setValue(std);
-                                    myref.child(key2).child("to").setValue(number2);
-                                    myref.child(key2).child("from_name").setValue(name);
-                                    myref.child(key2).child("message").setValue("بالانضمام الى فريق التخرج الخاص" + name + "لقد طلب منك الطالب");
-                                    myref.child(key2).child("status").setValue("wait");
-                                    myref.child(key2).child("type").setValue("join_group");
-//                                myrefall.child(pushkey).setValue(number2);
-                                }
-                                Log.e("number3",""+number3);
-                                if (number3 != null) {
-                                    myref.child(key3).child("from").setValue(std);
-                                    myref.child(key3).child("to").setValue(number3);
-                                    myref.child(key3).child("from_name").setValue(name);
-                                    myref.child(key3).child("message").setValue("بالانضمام الى فريق التخرج الخاص" + name + "لقد طلب منك الطالب");
-                                    myref.child(key3).child("status").setValue("wait");
-                                    myref.child(key3).child("type").setValue("join_group");
-//                                myrefall.child(pushkey).setValue(number3);
-                                }
-                                myrefagroup.child(keygroup).child("leaderStudentStd").setValue(std);
-                                myrefagroup.child(keygroup).child("graduateInFirstSemester").setValue(gender);
-                                myrefall.child(pushkey).setValue(std);
-                                button.setEnabled(false);
-
-                            } else {
-                                Toast.makeText(Create_Group.this, "فريقك اقل من الحد الادنى أو هناك تكرار في ارقام الفريق", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                        System.exit(0);
                     }
                 });
+                builder.show();
             }
         });
     }

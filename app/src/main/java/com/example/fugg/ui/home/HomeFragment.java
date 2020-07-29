@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fugg.Activity.MainActivity;
 import com.example.fugg.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -95,14 +96,19 @@ public class HomeFragment extends Fragment {
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                                         String proje_name=String.valueOf(dataSnapshot.child("initialProjectTitle").getValue());
-                                        System.out.println("name"+proje_name);
-                                        Toast.makeText(getActivity(), ""+proje_name, Toast.LENGTH_SHORT).show();
+
                                         proj_name.setText(proje_name);
+                                        if(proje_name==null||proje_name.equals("null")||proje_name.equals("")) {
+                                            proj_name.setText("لا يوجد حتى هذه اللحظه عنوان يرجى الانتظار");
+                                        }
                                         String leaderb=String.valueOf(dataSnapshot.child("leaderStudentStd").getValue());
                                         proj_leader.setText(leaderb);
                                         String teacher=String.valueOf(dataSnapshot.child("teacher").getValue());
                                         proj_super.setText(teacher);
-
+                                        String check=proj_super.getText().toString();
+                                        if(check==null||check.equals("null")||check.equals("")) {
+                                            proj_super.setText("لا يوجد حتى هذه اللحظه اي مشرف يرجى الانتظار");
+                                        }
                                         for (DataSnapshot childSnapshot: dataSnapshot.child("membersStd").getChildren()) {
                                             member_std=String.valueOf(childSnapshot.getValue());
                                             arrayList.add(member_std);

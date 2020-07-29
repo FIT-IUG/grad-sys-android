@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fugg.R;
 import com.google.android.material.navigation.NavigationView;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         hview = nvigation.getHeaderView(0);
         name = hview.findViewById(R.id.name);
 //        name.setText(shared.getString("nikname",""));
-        textView1 = findViewById(R.id.proj_super);
+        textView1 = findViewById(R.id.proj_supermain);
         textView2 = findViewById(R.id.proj_name);
         textView3 = findViewById(R.id.proj_leader);
         drawer = findViewById(R.id.drawer);
@@ -111,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                             if (user_id.equals(leader_id)){
                                 title=String.valueOf(dataSnapshot1.child("initialProjectTitle").getValue());
                                 teacher_id=String.valueOf(dataSnapshot1.child("teacher").getValue());
+
                                 for (DataSnapshot childSnapshot: dataSnapshot1.child("membersStd").getChildren()) {
                                     member_std=String.valueOf(childSnapshot.getValue());
                                     arrayList.add(member_std);
@@ -120,9 +122,13 @@ public class MainActivity extends AppCompatActivity {
                                     arrayList2.add(tags);
                                 }
 
-
-
                                 textView1.setText(teacher_id);
+                                String check=textView1.getText().toString();
+                                Toast.makeText(MainActivity.this, "check::"+check, Toast.LENGTH_SHORT).show();
+                                if(check==null||check.equals("null")||check.equals("")) {
+                                    textView1.setText("لا يوجد حتى هذه اللحظه اي مشرف يرجى الانتظار");
+                                }
+
                                 textView2.setText(title);
                                 textView3.setText(leader_id);
 
@@ -130,13 +136,9 @@ public class MainActivity extends AppCompatActivity {
                                         list1.setAdapter(adapter1);
                                 ArrayAdapter<String>adapter2=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_expandable_list_item_1,arrayList2);
                                         list2.setAdapter(adapter2);
-
-
                             }
                         }
-
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#E4E6EC"
     >
     <TextView
         android:layout_width="match_parent"
@@ -10,7 +11,9 @@
         android:layout_marginTop="30dp"
         android:text="الطلبات الموجوده "
         android:gravity="center"
-        android:textSize="20dp"
+        android:textSize="25dp"
+        android:textColor="#0B0202"
+
         />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_viewrequest"

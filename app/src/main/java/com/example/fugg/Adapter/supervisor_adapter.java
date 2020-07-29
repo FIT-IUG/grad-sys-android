@@ -5,7 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,8 +26,9 @@ public class supervisor_adapter extends RecyclerView.Adapter<supervisor_adapter.
     public void setOnItemClick(OnItemClick onItemClick) {
         this.onItemClick = onItemClick;
     }
-    public supervisor_adapter( ArrayList<com.example.fugg.classs.notifications> card) {
+    public supervisor_adapter(Context context, ArrayList<com.example.fugg.classs.notifications> card) {
         this.card = card;
+        this.context = context;
     }
 
 //    public supervisor_adapter( ArrayList<com.example.fugg.classs.notifications> card, OnItemClick onItemClick) {
@@ -46,6 +49,11 @@ public class supervisor_adapter extends RecyclerView.Adapter<supervisor_adapter.
         myHolder.textView2.setText(item.getLeader_name());
         myHolder.textView3.setText(item.getLeader_email());
 
+        ArrayAdapter<String> adapter1=new ArrayAdapter<String>(context,android.R.layout.simple_expandable_list_item_1,item.getArrayListlist1());
+        ArrayAdapter<String> adapter2=new ArrayAdapter<String>(context,android.R.layout.simple_expandable_list_item_1,item.getArrayListlist2());
+        supervisor_adapter.myHolder.listView1.setAdapter(adapter1);
+        supervisor_adapter.myHolder.listView2.setAdapter(adapter2);
+
 //        holder.bind(onItemClick,card.get(i),i);
     }
     @Override
@@ -57,12 +65,16 @@ public class supervisor_adapter extends RecyclerView.Adapter<supervisor_adapter.
         static TextView textView1;
         static TextView textView2;
         static TextView textView3;
+        static ListView listView1;
+        static ListView listView2;
 
         public myHolder(@NonNull View itemView) {
             super(itemView);
             textView1 = itemView.findViewById(R.id.text1);
             textView2 = itemView.findViewById(R.id.text2);
             textView3 = itemView.findViewById(R.id.text3);
+            listView1=itemView.findViewById(R.id.listsuper1);
+            listView2=itemView.findViewById(R.id.listsuper2);
         }
 //        public void   bind(OnItemClick lis, notifications data, int position){
 //

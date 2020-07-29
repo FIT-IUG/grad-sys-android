@@ -47,6 +47,5 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
     implementation 'com.google.android.material:material:1.0.0-alpha1'
-
-
+    implementation 'com.github.jakebonk:ChipView:1.0.1'
 }

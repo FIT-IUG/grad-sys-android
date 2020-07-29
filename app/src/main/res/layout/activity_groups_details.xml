@@ -74,82 +74,60 @@
             android:paddingRight="10dp"
             android:layout_marginTop="20dp"
             />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="11dp"
-            android:layout_gravity="right"
-            android:gravity="right"
-            >
-            <ListView
-                android:id="@+id/checkable_list"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                >
-            </ListView>
-<!--            <RadioGroup-->
-<!--                android:id="@+id/groub"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_weight="2"-->
-<!--                android:layout_gravity="right"-->
-<!--                android:gravity="right"-->
-<!--                >-->
-<!--                <RadioButton-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="موقع ويب"-->
-<!--                    android:layout_weight="2"-->
-<!--                    android:gravity="center"-->
-<!--                    />-->
-<!--                <RadioButton-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="تطبيق أندرويد"-->
-<!--                    android:layout_weight="2"-->
-<!--                    android:gravity="center"-->
-<!--                    />-->
-<!--                <RadioButton-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="تطبيق IOS"-->
-<!--                    android:layout_weight="2"-->
-<!--                    android:gravity="center"-->
-<!--                    />-->
-
-<!--                <RadioButton-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="فلم قصير"-->
-<!--                    android:layout_weight="2"-->
-<!--                    android:gravity="center"-->
-<!--                    />-->
-
-<!--                <RadioButton-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="لعبة جوال"-->
-<!--                    android:layout_weight="2"-->
-<!--                    android:gravity="center"-->
-<!--                    />-->
-<!--            </RadioGroup>-->
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/form"
-            android:layout_marginRight="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:text="إرسال"
-            android:textSize="30dp"
-            />
     </LinearLayout>
-</LinearLayout>
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/spinner255"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="text"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:background="@drawable/form"
+        app:hintText="نوع المشروع"
+        />
+    <ListView
+        android:id="@+id/list255"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_gravity="right"
+        />
+
+<!--        <TextView-->
+<!--            android:id="@+id/text1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            />-->
+<!--        <EditText-->
+<!--            android:id="@+id/edit123"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            />-->
+<!--            <com.allyants.chipview.ChipView-->
+<!--                android:id="@+id/cvTag"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="250dp"/>-->
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/form"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="إرسال"
+        android:textSize="30dp"
+        />
+
+    </LinearLayout>
+

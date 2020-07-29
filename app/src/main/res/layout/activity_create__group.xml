@@ -62,60 +62,60 @@
                 android:background="@drawable/form"
                 app:hintText="قم بالضغط هنا لاختيار اطالب الاول"
                 />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:gravity="right"
-                android:text="الرقم الجامعي للعضو الثاني"
-                android:textColor="#111"
-                android:layout_marginTop="20dp"
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:gravity="right"-->
+<!--                android:text="الرقم الجامعي للعضو الثاني"-->
+<!--                android:textColor="#111"-->
+<!--                android:layout_marginTop="20dp"-->
 
-                android:textSize="10dp" />
+<!--                android:textSize="10dp" />-->
 
-            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-                android:id="@+id/spinner2"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:inputType="text"
-                android:padding="10dp"
-                android:singleLine="true"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                android:gravity="right"
-                android:background="@drawable/form"
-                app:hintText="قم بالضغط هنا لاختيار اطالب الثاني"
-                />
+<!--            <com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
+<!--                android:id="@+id/spinner2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:inputType="text"-->
+<!--                android:padding="10dp"-->
+<!--                android:singleLine="true"-->
+<!--                android:textColor="#000000"-->
+<!--                android:textSize="20dp"-->
+<!--                android:gravity="right"-->
+<!--                android:background="@drawable/form"-->
+<!--                app:hintText="قم بالضغط هنا لاختيار اطالب الثاني"-->
+<!--                />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:gravity="right"
-                android:text="الرقم الجامعي للعضو الثالث"
-                android:textColor="#111"
-                android:layout_marginTop="20dp"
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:gravity="right"-->
+<!--                android:text="الرقم الجامعي للعضو الثالث"-->
+<!--                android:textColor="#111"-->
+<!--                android:layout_marginTop="20dp"-->
 
-                android:textSize="10dp" />
+<!--                android:textSize="10dp" />-->
 
 
-            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-                android:id="@+id/spinner3"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:inputType="text"
-                android:padding="10dp"
-                android:singleLine="true"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                android:gravity="right"
-                android:background="@drawable/form"
-                app:hintText="قم بالضغط هنا لاختيار اطالب الثالث"
-                />
+<!--            <com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
+<!--                android:id="@+id/spinner3"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:inputType="text"-->
+<!--                android:padding="10dp"-->
+<!--                android:singleLine="true"-->
+<!--                android:textColor="#000000"-->
+<!--                android:textSize="20dp"-->
+<!--                android:gravity="right"-->
+<!--                android:background="@drawable/form"-->
+<!--                app:hintText="قم بالضغط هنا لاختيار اطالب الثالث"-->
+<!--                />-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -153,6 +153,11 @@
                     android:gravity="right"
                     />
             </LinearLayout>
+            <ListView
+                android:id="@+id/list123456"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                />
             <Button
                 android:id="@+id/create"
                 android:layout_width="150dp"
